@@ -1,130 +1,117 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(
-    MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.transparent,
-          elevation: 0,
-        ),
-        body: Center( // Centers everything vertically and horizontally
+void main() => runApp(LoginApp());
+
+class LoginApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Login UI',
+      debugShowCheckedModeBanner: false,
+      home: LoginScreen(),
+    );
+  }
+}
+
+class LoginScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: const Color(0xFFE0F2F1), // Light green background
+      body: SafeArea(
+        child: Center(
           child: Padding(
-            padding: const EdgeInsets.all(16.0), // Padding around the content
+            padding: const EdgeInsets.symmetric(horizontal: 32.0),
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.center, // Vertically center the items
-              crossAxisAlignment: CrossAxisAlignment.center, // Horizontally center the items
+              mainAxisSize: MainAxisSize.min,
               children: [
-                // Profile Icon
-                CircleAvatar(
-                  radius: 50,
-                  backgroundColor: Color(0xFF3C7962),
-                  child: Icon(
-                    Icons.person,
-                    size: 90,
-                    color: Colors.white,
-                  ),
-                ),
-                SizedBox(height: 40), // Space between the icon and the text
-
-                // Login Text
+                Icon(Icons.person, size: 100, color: Color(0xFF00695C)),
+                SizedBox(height: 20),
                 Text(
-                  'Login',
+                  "Login",
                   style: TextStyle(
-                    fontStyle: FontStyle.italic,
+                    fontSize: 28,
                     fontWeight: FontWeight.bold,
-                    fontSize: 30,
-                    color: Color(0xFF3C7962),
+                    color: Color(0xFF00695C),
                   ),
                 ),
-                SizedBox(height: 40), // Space between "Login" and the input fields
-
-                // Name TextField (Shortened width)
-                Container(
-                  width: 300, // Shortened width
-                  child: TextField(
-                    decoration: InputDecoration(
-                      hintText: 'Name',
-                      filled: true,
-                      fillColor: Color(0xFF77BBA2),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(12),
-                        borderSide: BorderSide(color: Color(0xFF3C7962), width: 1),
-                      ),
+                SizedBox(height: 30),
+                // Name Field
+                TextField(
+                  decoration: InputDecoration(
+                    hintText: "Name",
+                    filled: true,
+                    fillColor: Color(0xFF80CBC4),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(30),
+                      borderSide: BorderSide.none,
                     ),
+                    contentPadding: EdgeInsets.symmetric(horizontal: 20),
                   ),
                 ),
-                SizedBox(height: 20), // Space between input fields
-
-                // Password TextField (Shortened width)
-                Container(
-                  width: 300, // Shortened width
-                  child: TextField(
-                    decoration: InputDecoration(
-                      hintText: 'Password',
-                      filled: true,
-                      fillColor: Color(0xFF77BBA2),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(12),
-                        borderSide: BorderSide(color: Color(0xFF3C7962), width: 1),
-                      ),
+                SizedBox(height: 16),
+                // Password Field
+                TextField(
+                  obscureText: true,
+                  decoration: InputDecoration(
+                    hintText: "Password",
+                    filled: true,
+                    fillColor: Color(0xFF80CBC4),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(30),
+                      borderSide: BorderSide.none,
                     ),
-                    obscureText: true, // Hide password input
+                    contentPadding: EdgeInsets.symmetric(horizontal: 20),
                   ),
                 ),
-                SizedBox(height: 30), // Space between password field and the login button
-
+                SizedBox(height: 24),
                 // Login Button
-                ElevatedButton(
-                  onPressed: () {
-                    // Handle login functionality here
-                  },
-                  style: ElevatedButton.styleFrom( backgroundColor: Color(0xFF3C7962),
-                    padding: EdgeInsets.symmetric(horizontal: 100, vertical: 15),
+                SizedBox(
+                  width: double.infinity,
+                  child: ElevatedButton(
+                    onPressed: () {},
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Color(0xFF004D40),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30),
+                      ),
+                      padding: EdgeInsets.symmetric(vertical: 14),
+                    ),
+                    child: Text(
+                      "Log In",
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: Colors.white, // ✅ This makes the text white
+                      ),
+                    ),
                   ),
+                ),
+
+                SizedBox(height: 12),
+                TextButton(
+                  onPressed: () {},
                   child: Text(
-                    'Log In',
+                    "Forgot Password",
+                    style: TextStyle(color: Colors.black87),
+                  ),
+                ),
+                SizedBox(height: 8),
+                GestureDetector(
+                  onTap: () {},
+                  child: Text(
+                    "Sign up",
                     style: TextStyle(
-                        fontSize: 18,
-                        color: Color(0xFFFFFFFF)),
-                  ),
-                ),
-                SizedBox(height: 20), // Space between login button and "Forgot Password"
-
-                // Forgot Password Text
-                TextButton(
-                  onPressed: () {
-                    // Handle forgot password functionality
-                  },
-                  child: Text(
-                    'Forgot Password',
-                    style: TextStyle(color: Color(0xFF3C7962)),
-                  ),
-                ),
-                SizedBox(height: 20), // Space between forgot password and sign up
-
-                // Sign Up Text
-                TextButton(
-                  onPressed: () {
-                    // Handle sign up functionality
-                  },
-                  child: Text(
-                    'Sign Up',
-                    style: TextStyle(color: Color(0xFF3C7962)),
+                      fontWeight: FontWeight.bold,
+                      color: Color(0xFF004D40),
+                      fontSize: 16,
+                    ),
                   ),
                 ),
               ],
             ),
           ),
         ),
-        backgroundColor: Color(0xFF77BBA2),
       ),
-    ),
-  );
+    );
+  }
 }
